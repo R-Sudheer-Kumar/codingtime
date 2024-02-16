@@ -1,5 +1,4 @@
-Coding Assessment Portal
----
+
 
 # Coding Assessment Portal
 
