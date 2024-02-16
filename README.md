@@ -2,7 +2,8 @@
 
 # Coding Assessment Portal
 
-![image](https://github.com/R-Sudheer-Kumar/codingtime/assets/109749996/9966f404-b920-4570-a142-937e8135414c)
+![image](https://github.com/R-Sudheer-Kumar/codingtime/assets/109749996/eded3e1c-57d2-4870-bc84-595027a398dd)
+
 
 > A coding assessment portal built using HTML, CSS, JavaScript, and Flask.
 
