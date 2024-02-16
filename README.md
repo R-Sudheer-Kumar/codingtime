@@ -4,8 +4,7 @@ For your GitHub README file, you'll want to provide a concise overview of your c
 
 # Coding Assessment Portal
 
-![Uploading image.png…]()
-
+![image](https://github.com/R-Sudheer-Kumar/codingtime/assets/109749996/9966f404-b920-4570-a142-937e8135414c)
 
 > A coding assessment portal built using HTML, CSS, JavaScript, and Flask.
 
