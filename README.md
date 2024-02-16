@@ -4,7 +4,8 @@ For your GitHub README file, you'll want to provide a concise overview of your c
 
 # Coding Assessment Portal
 
-![Project Image](project_image.png)
+![Uploading image.png…]()
+
 
 > A coding assessment portal built using HTML, CSS, JavaScript, and Flask.
 
