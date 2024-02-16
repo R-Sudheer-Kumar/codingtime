@@ -1,5 +1,3 @@
-For your GitHub README file, you'll want to provide a concise overview of your coding assessment portal project along with instructions for setting up and running the application. Here's a template you can use:
-
 ---
 
 # Coding Assessment Portal
@@ -107,13 +105,13 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [R Sudheer Kumar](LICENSE).
 
 ---
 
 ## Contact
 
-For inquiries, please contact [yourname](mailto:youremail@example.com).
+For inquiries, please contact [rsudheerkumar40@gmail.com](mailto:rsudheerkumar40@example.com).
 
 ---
 
