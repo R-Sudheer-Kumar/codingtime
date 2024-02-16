@@ -1,0 +1,4 @@
+Flask==3.0.0
+Flask-AceEditor==1.0.7
+Flask-SQLAlchemy==3.1.1
+requests==2.31.0

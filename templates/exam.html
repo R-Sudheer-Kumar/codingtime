@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href='/static/images/iconn.png'/>
+    <title>Exam</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+
+    <!-- load bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body
+        {
+            background-color: beige;
+            width: 100%;
+        }
+        .editor 
+        {
+           font-size: 20px;
+            height:450px;
+            
+        }
+        .navbar
+        {
+            width: 100%;
+        }
+        button
+        {
+            font-size: 30px;
+            margin:50px;
+        }
+        .main
+        {
+            margin-left: 150px;
+        }
+        .editor-container
+        {
+            width:800px;
+        }
+        .question
+        {
+            margin-top: 50px;
+            margin-bottom: 30px;
+            margin-left: 30px;
+        }
+        .editorsettings
+        {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            width:750px;
+            justify-content: end;
+        }
+        select
+        {
+            padding: 7px;
+            margin:10px;
+            border-radius: 10%;
+            background-color :blue;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            outline: none;  
+        }       
+        option
+        {
+            background-color: white;
+            color: black;
+        }
+        select:focus
+        {
+            outline: 5px solid rgba(86, 86, 232, 0.342);
+        }
+        .themelabel
+        {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: -10px;
+        }
+        .langlabel
+        {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: -10px;
+            margin-left: 80px;
+        }
+        .runbuttons
+        {
+            width:800px;
+            display: flex;
+            margin-top:-30px;
+            flex-wrap: wrap;
+            justify-content: end;
+        }
+        .runbuttons button
+        {
+            font-size: 20px;
+            border-radius: 10px;
+            padding:8px;
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+        #run
+        {
+            background-color: green;
+            margin-right: -5px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        #submit
+        {
+            background-color: red;
+            margin-right: 30px;
+        }
+        #run:hover , #submit:hover
+        {
+            background-color: blue;
+        }
+        .uiop
+        {
+            width:500px;
+            height:400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: -60px;
+            margin-left: 30px;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .uinp
+        {
+            width:90%;
+            height:120px;
+            border:2px solid black;
+            margin-bottom: 15px;
+            padding:5px;
+        }
+        #uout
+        {
+            width:90%;
+            height:250px;
+            border:2px solid black;
+            padding:5px;
+        }
+        #uoutpre
+        {
+            width:100%;
+            height:100%;
+            font-size: 18px;
+            
+        }
+        label
+        {
+            font-weight: bold;
+        }
+        .iop 
+        {
+            width:600px;
+            height:800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .sampleiop
+        {
+            width:400px;
+            height:550px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;
+        }
+        .sampleinp
+        {
+            width: 90%;
+            height: 180px;
+            font-size: 22px;
+            border:3px solid black;
+            padding:10px;
+        }
+        .sampleinp pre 
+        {
+            width: 100%;
+            height: 100% ;
+        }
+        .iop
+        {
+            display: flex;
+            flex-direction: column;
+
+        }
+        table
+        {
+            margin-top: 50px;
+        }
+        table,th,td
+        {
+            border: 2px solid black;
+            padding:3px 35px;
+            font-size: 20px;
+        }
+        textarea
+        {
+            background-color: beige;
+            resize: none;
+        }
+        .score
+        {
+            position: absolute;
+            right:200px;
+            top:20px;
+            padding:10px;
+            height:50px;
+            display: inline-block;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            color:red;
+            /* border: 2px solid red; */
+        }
+        .sidenav
+        {
+            position: absolute ;
+            display: flex;
+            flex-direction: column;
+            width: 100px;
+            bottom:100px;
+            left: 0;
+            top:60px;
+            background-color: red;
+            /* color: white; */
+            text-align: center;
+            padding-top: 20px;
+            align-items: center;
+            /* margin-left: -20px; */
+        }
+        .sidenav a
+        {
+            margin:10px 0px;
+            text-decoration: none;
+            color: black;
+            width:50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 30px;
+            background-color: white;
+            margin-left: -10px;
+        }
+        .fail
+        {
+            background-color: red;
+            color: white;
+        }
+        .pass
+        {
+            background-color:green;
+            color: white;
+        }
+        footer
+        {
+            width:100%;
+        }
+        @media (max-width:450px)
+        {
+            body 
+            {
+            overflow-x: hidden;
+            }
+          /* ===============Nav bar ================== */
+
+            .navbar
+            {
+                display: flex;
+                flex-direction: row;
+                margin-left: -10px;
+                width:380%;
+                /* justify-content:; */
+            }
+
+
+          /* ===================== footer =========================== */
+            footer
+            {
+            margin-top: 130px;
+            width:380%;
+            } 
+            footer h5
+            {
+                font-size: 13px;
+                margin-left: 30px;
+                margin-right: 20px;
+            }
+            footer h6 
+            {
+                font-size: 12px;
+                margin-top: 5px;
+            }
+        }
+    </style>
+
+    <script>
+        let editor;
+        var res ;
+        function editorspace()
+        {
+            editor = ace.edit("editor");
+            editor.setTheme("ace/theme/dracula");
+            editor.session.setMode("ace/mode/python");
+            editor.setOptions({enableLiveAutocompletion:true});
+            editor.setValue("# start your code here",-1);
+        }
+
+        function executerun(id)
+        {
+            $.ajax(
+                {
+                    url:'/executer',
+                    method:'POST',
+                    data:
+                    {
+                        'lang':document.getElementById("planguage").value,
+                        'inp':document.getElementById("uinp").value,
+                        'code': editor.getSession().getValue(),
+                        'id':id
+                    },
+                    success: function(response)
+                    {
+                        if(response.startsWith("Traceback"))
+                        {
+                            response = "<h4 style='color:red';>ERROR :  </h4>"+response.toString();
+                            document.getElementById("uoutpre").innerHTML = response;
+                        }
+                        else
+                        {
+                            document.getElementById("uoutpre").innerHTML = response.toString() ;
+                        }
+                    },
+                    error:function(error)
+                    {
+                        document.getElementById("uoutpre").innerHTML =  "Something went wronog ,Retry in some time";  
+                    }
+                }
+            );
+        }
+
+
+        function executesubmit(id)
+        {
+            $.ajax(
+                {
+                    url:'/executesubmit',
+                    method:'POST',
+                    data:
+                    {
+                        'lang':document.getElementById("planguage").value,
+                        'inp':document.getElementById("uinp").value,
+                        'code': editor.getSession().getValue(),
+                        'id': id,
+                        'section':"{{section}}",
+                        'uid' : "{{uid}}"
+ 
+                    },
+                    success: function(response)
+                    {
+                        res = response.toString();
+                        let val = response;
+                        for( let i in  val )                        
+                        {
+                            id = "tc-"+(parseInt(i)+1).toString();
+                            if(response[i]==0)
+                            {
+                                document.getElementById(id).classList = 'fail';
+                                document.getElementById(id).innerHTML= "Failed";
+                            }
+                            else if(response[i]==1)
+                            {
+                                document.getElementById(id).classList = 'pass';
+                                document.getElementById(id).innerHTML= "passed";
+                            }
+                            else
+                            {
+                                document.getElementById(id).classList = 'fail';
+                                document.getElementById(id).innerHTML= "Error";
+                            }
+                        }
+                    },
+                    error:function(error)
+                    {
+                        document.getElementById("uoutpre").innerHTML =  "Retry in some time";
+                    }
+                }
+            );
+        }
+
+
+        function ChangeTheme()
+        {
+            const path = 'ace/theme/';
+            editor = ace.edit("editor");
+            var value = document.getElementById("theme").value;
+            var totalpath = path+value;
+            editor.setTheme(totalpath);
+        }
+        
+        function ChangeLanguage()
+        {
+            
+            const path = 'ace/mode/';
+            editor = ace.edit("editor");
+            var value = document.getElementById("planguage").value;
+            var totalpath = path+value;
+            editor.session.setMode(totalpath);
+            var str;
+            if(value=='c_cpp')
+            {
+                str = "// start your code here";
+            }
+            else if(value=='python')
+            {
+                str = "# start your code here";
+            }
+            else if(value=='java')
+            {
+                str = "// start your code here";
+            }
+            editor.setValue(str,-1);
+        }
+
+    </script>
+</head>
+
+
+<body style="position: relative;" onload="editorspace()">
+    <nav class="navbar bg-black pt-3 pe-5 pb-2">
+        <div class="fw-medium text-white d-flex"><span class="material-symbols-outlined ms-3 pe-2">schedule</span> <h5> Coding Time</h5></div>
+        <h5 class="text-white fw-medium navname">SPECIALLY DESIGNED FOR YOU</h5>
+            
+        <div class="container-flex justify-content-end ">
+            <!-- <div class="btn btn-success me-3 btn-md fw-medium" >Register</div> -->
+            <a href="{{ url_for('endtest' , section = section , uid = uid) }}" ><div class="btn btn-danger fw-medium b-end">End Test</div></a>
+        </div>
+    </nav>
+
+    <div class="sidenav">
+      
+        {% for i in allq %}
+            <a href="{{ url_for('exam' ,section=section , id= i.sno) }}">{{loop.index}}</a>
+        {% endfor %} 
+    </div>
+
+    <div class="main d-flex" style="position: relative;">
+        <div class="econtainer">
+            <div class="question">
+                <h4 id="wquestion">{{ques}}</h4>
+            </div>
+            <div class="editorsettings">
+                <div class="dropdown">
+                    <label for="theme" class="themelabel">Theme</label>
+                    <select name="theme" id="theme" onchange="ChangeTheme()">
+                        <option value="dracula">Dracula</option>
+                        <option value="cloud9_day">light</option>
+                        <option value="cloud9_night">dark</option>
+                    </select>
+                </div>
+            
+                <div class="dropdown">
+                    <label for="planguage" class="langlabel">Language</label>
+                    <select name="planguage" id="planguage" style="background-color: green;"  onchange="ChangeLanguage()">
+                        <option value="c_cpp">C</option>
+                        <option value="python" selected>Python</option>
+                        <option value="java" disabled>Java</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="editor-container">
+                <div class="editor" id="editor"></div>
+            </div>
+            <div class="runbuttons">  
+                <button id="run" onclick="executerun('{{id}}')">Run</button>
+                <button id="submit" onclick="executesubmit('{{id}}')">Submit</button>
+            </div>
+
+            <div class="uiop">
+                <label for="uinp">INPUT</label>
+                <textarea class="uinp" id="uinp">{{ "".join(st[0]) }}</textarea>
+                <label for="uout">OUTPUT</label>
+                <div class="uout" id="uout"><pre id="uoutpre"></pre>  
+                </div>
+            </div>
+        </div>
+        <div class="score">
+            <h3>Marks : <span class="scorem">20</span> </h3>
+        </div>
+        <div class="iop">
+            <div class="sampleiop">
+
+                <h4 class="mb-1">sample input</h4>
+                <div class="sampleinp" id="sampleinp">
+                    <pre>{{ "".join(st[0]) }}</pre>
+                </div>
+
+                <h4 class="mt-2 mb-1">sample output</h4>
+                <div class="sampleinp" id="sampleout">
+                    <pre>{{ "".join(st[1]) }}</pre>
+                </div>
+            </div>
+            <div class="htestcases">
+                <table>
+                    <tr>
+                        <th>Hidden Testcases</th>
+                        <th>Status</th>
+                    </tr>   
+                    {% for i in ht %}                 
+                    <tr>
+                        <td>Testcase{{loop.index}}</td>
+                        <td id="tc-{{loop.index}}"></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-black text-white d-flex flex-column justify-content-center align-items-center flex-wrap ps-5 pe-5" style="height: 100px;"> 
+        <h5>Coding Time is created by R Sudheer Kumar, which helps students to practice coding and improve their coding skills </h5>
+        <h6> &copy;CopyRights by R Sudheer Kumar </h6>
+    </footer>
+
+
+    <script src="/static/lib/ace.js"></script>
+    <script src="/static/lib/ext-inline_autocomplete.js"></script>
+    <script src="/static/lib//theme-cloud9_day.js"></script>
+    <script src="/static/lib/theme-cloud9_night.js"></script>
+    <script src="/static/lib/theme-dracula.js"></script>
+    <script src="/static/lib/mode-python.js"></script>
+    <script src="/static/lib/mode-c_cpp.js"></script>
+    <script src="/static/lib/mode-java.js"></script>
+</body>
+</html>

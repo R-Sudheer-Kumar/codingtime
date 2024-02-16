@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href='/static/images/iconn.png'/>
+    <title>ExamSection</title>
+
+     <!-- load bootstrap-->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+     <style>
+      *
+      {
+        box-sizing: border-box;
+      }
+      .uname
+      {
+        width: 150px; 
+        overflow-y: hidden;
+        overflow-x:hidden;
+        text-align: center;
+        display: inline-block;
+        margin-top: 0px;
+        max-height:59px;
+        text-align: end;
+        margin-right:5px ;
+      }
+      .esection
+      {
+        padding-top: 10px;
+        min-height: 565px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }  
+      .esection h2
+      {
+        margin-bottom: 30px;
+      }
+      .section
+      {
+        position: relative;
+        width:550px;
+        height:130px;
+        text-align: start;
+        box-shadow: 1px 1px 15px 5px rgba(0, 0, 0, 0.693);
+        margin-bottom: 40px;
+
+      }    
+      .section h3
+      {
+        text-align: center;
+        padding:8px 0px 8px 0px;
+        background-color: rebeccapurple;
+        color: white;
+      }
+      .section h5 
+      {
+        padding-left: 30px;
+        padding-top: 20px;
+        font-size: 20px;
+      }
+      .section form 
+      {
+        position: absolute;
+        right:40px;
+        bottom:18px;
+      }
+      .section form button 
+      {
+        font-size: 23px;
+      }
+      @media (max-width:450px)
+        {
+          body 
+          {
+            overflow-x: hidden;
+          }
+          /* ===============Nav bar ================== */
+
+          .navbar
+          {
+              display: flex;
+              flex-direction: row;
+              margin-left: -30px;
+              height:60px;
+              width:600px;
+          }
+
+          .navbar .backimg
+          {
+            width:30px;
+            height:30px;
+            margin-left: 20px;
+           
+          }
+          .navbar .navname
+          {
+            font-size: 15px;
+            margin-right: 220px;
+          }
+          .uprofile
+          {
+            position: absolute;
+            bottom:15px;
+            right:5px;
+          }
+          .esection
+          {
+            min-height:850px;
+          }
+          .section
+          {
+            width:500px;
+          }
+
+          /* ===================== footer =========================== */
+          footer
+          {
+            margin-top: 200px;
+            width:570px;
+          } 
+          footer h5
+          {
+              font-size: 11px;
+              margin-left: -5px;
+              margin-right: -20px;
+          }
+          footer h6 
+          {
+              font-size: 10px;
+              margin-top: 5px;
+          }
+        
+        }
+     </style>
+    
+</head>
+<body class="d-flex flex-column flex-wrap">
+    <nav class="navbar bg-black pt-3 pe-1 pb-2" style="height:80px">
+        <a href=" {{ url_for('userprofile') }}">
+            <img src="/static//images/backarrow.png" alt="" width="45px" height="40px"  class="ms-5 me-3 mb-1 mt-0 bg-success " style="border-radius: 50%; padding:2px">
+        </a>    
+        <h5 class="text-white fw-medium ms-5 navname">SPECIALLY DESIGNED FOR YOU</h5>
+
+        <div class="uprofile d-flex align-items-center justify-content-end flex-wrap overflow-hidden" style="width:250px">
+            <h6 class="text-white uname"> {{p.name}} </h6>
+            <img src="/static/images/userprofile.png" alt="" width="50px" style="border-radius: 50%; margin-right: 27px;">
+        </div>
+    </nav>
+
+    <div class="esection">
+        <h2>Exams</h2>
+        {% for i in qdict.keys() %}
+            <div class="section">
+                <h3>{{i}}</h3>
+                <h5>NO of Questions : <span id="qno">{{qdict[i]}}</span></h5>
+                <form action="/exam/{{i}}" method="POST">
+                    <input type="number" name="id" id="id" value="{{p.sno}}" style="display: none;">
+                    <button type="submit" class="btn btn-success">Start</button>
+                </form>
+            </div>  
+        {% endfor %}  
+
+    </div>
+
+    <footer class="bg-black text-white d-flex flex-column justify-content-center align-items-center flex-wrap ps-5 pe-5" style="height: 100px;"> 
+      <h5>Coding Time is created by R Sudheer Kumar, which helps students to practice coding and improve their coding skills </h5>
+      <h6> &copy;CopyRights by R Sudheer Kumar </h6>
+  </footer>
+
+</body>
+</html> 
